@@ -1,16 +1,16 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../redux/reducers/rootReducer';
 import { Link } from 'react-router-dom';
 
-const Photo: React.FC = () => {
+const Photo: React.FC = (): JSX.Element => {
 	// берем фото из стора
-	let photos = useSelector((state: AppState) => state.photos);
+	const photos: Array<any> = useSelector((state: AppState) => state.photos);
 	// берем id открытой фото для отрисовки
 	const { id } = useParams<{ id: string }>();
 	// ищем фото для отрисовки по id
-	const photoToRender = photos.find((item) => item.id === id);
+	const photoToRender: any = useMemo(() => photos.find((item) => item.id === id), [id]);;
 	return (
 		<div className="photo">
 			<img src={photoToRender.urls.full} alt="" className="photo__img" />

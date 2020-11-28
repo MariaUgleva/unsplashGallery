@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 import { PhotosActions, PhotosActionTypes } from '../actions/photosAction';
-const initialvalue: any = [];
-const photosReducer: Reducer<Array<any>, PhotosActions> = (state: any = initialvalue, action) => {
+const initialvalue: Array<any> = [];
+const photosReducer: Reducer<Array<any>, PhotosActions> = (state: Array<any> = initialvalue, action) => {
 	switch (action.type) {
 		case PhotosActionTypes.FETCH_PHOTOS:
 			return [...action.data];

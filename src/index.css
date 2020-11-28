@@ -5,6 +5,9 @@
 	font-family: 'Roboto', sans-serif;
 	color: black;
 }
+#root {
+    max-width: 100vw;
+}
 a {
 	outline: none;
 	text-decoration: none;

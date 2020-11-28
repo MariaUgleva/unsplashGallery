@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import photosReducer from './photosReducer';
-import {connectRouter} from 'connected-react-router';
+import {connectRouter, RouterState} from 'connected-react-router';
 import {History} from 'history';
 
 // поставила any так-как объекты с сервера сложные
 export type AppState = {
-	router: any
+	router: RouterState
 	photos: Array<any>;
 };
 

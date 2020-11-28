@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { requestPhotos } from '../../redux/actions/photosAction';
 import { AppState } from '../../redux/reducers/rootReducer';
 import { Link } from 'react-router-dom';
 
-const Gallery: React.FC = () => {
+const Gallery: React.FC = (): JSX.Element => {
 	const dispatch = useDispatch();
 	// берем фото из стора
-	const photos = useSelector((state: AppState) => state.photos);
+	const photos: Array<any> = useSelector((state: AppState) => state.photos);
 	// если фото еще нет, то делаем запрос на подгрузку
-	if (photos.length === 0) {
-		dispatch(requestPhotos());
-	}
+	useEffect(() => {
+		if (photos.length === 0) {
+			console.log('подгружаю');
+			dispatch(requestPhotos());
+		}
+	}, [photos.length]);
 	return (
 		<div className="container">
 			<div className="gallery">
